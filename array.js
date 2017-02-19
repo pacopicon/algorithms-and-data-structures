@@ -16,3 +16,23 @@ Array.prototype.insertAt = function(index, element) {
   }
   return this;
 };
+
+// Function to get Fibonacci sequence:
+
+var getFib = function(digit) {
+  if (digit < 3) {
+    return digit;
+  } else {
+    var seq = [1, 2];
+    var num = digit - 2;
+
+    for (var i = 0; i < num; i++ ) {
+        var lastNum = seq[seq.length -2] + seq[seq.length - 1];
+        seq.push(lastNum);
+    }
+    return {
+      lastNum: lastNum,
+      seq: seq
+    };
+  }
+};
