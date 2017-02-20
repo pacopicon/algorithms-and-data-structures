@@ -1,9 +1,21 @@
 // Functions for Arrays
 
+// add:
+Array.prototype.add = function(data) {
+  this.push(data);
+};
+
+// remove:
+Array.prototype.remove = function(data) {
+  this = this.filter(function(current) {
+    return current !== data;
+  });
+};
+
 // insert:
 Array.prototype.insertAt = function(index, element) {
   if (index >= this.length) {
-       return console.log("Dude, if you're going to insert an element in the last position, then just push or add it...duh...");
+       this.add(element);
      }
   last = this.length - 1;
   this.push(this[last]);
@@ -15,6 +27,31 @@ Array.prototype.insertAt = function(index, element) {
     }
   }
   return this;
+};
+
+// search:
+Array.prototype.search = function(data) {
+  var foundIndex = this.indexOf(data);
+  if(~foundIndex) {
+    return foundIndex;
+  }
+
+  return null;
+};
+
+// return index
+Array.prototype.getAtIndex = function(index) {
+  return this[index];
+};
+
+// return length
+Array.prototype.length = function() {
+  return this.length;
+};
+
+// print
+Array.prototype.print = function() {
+  console.log(this.join(' '));
 };
 
 // Function to get Fibonacci sequence:
