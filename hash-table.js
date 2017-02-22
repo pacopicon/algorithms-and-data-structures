@@ -50,47 +50,6 @@ HashTable.prototype.calculateHashCode = function(key) {
   return (hash % calculatePrime());
 };
 
-var calculatePrime = function(num) {
-
-  var collectMultiples = function(num) {
-    var lowerInt = [];
-    var total = num;
-    for (i = 0; i < num; i++) {
-      total = total - 1;
-      if (total != 1) {
-        lowerInt.push(total);
-      }
-    }
-    var multiples = [];
-    for (i = lowerInt.length - 1; i > 0; i--) {
-      if (num % lowerInt[i] === 0) {
-        multiples.push(lowerInt[i]);
-      }
-    }
-    return multiples;
-  };
-  multiples = collectMultiples(num);
-
-  var checkIfPrime = function(num, multiples) {
-    if (multiples.length === 0) {
-      return num;
-    } else {
-      console.log("num: " + num + ", multiples: " + multiples.length);
-      num += 1;
-      multiples = collectMultiples(num);
-      console.log("num: " + num + ", multiples: " + multiples.length);
-      if (multiples.length === 0) {
-        return num;
-      } else {
-        checkIfPrime(num, multiples);
-      }
-    }
-  };
-
-  return checkIfPrime(num, multiples);
-};
-
-
 // The 'add' function checks to see if 'this.value' -- itself an object -- has 'hash' as a property: this.value[hash].  If it does not, then 'hash' is added as a property with an empty object set as its associated value: this.value[hash] = {}.  Then 'add' checks to see if an existing hash value object (this.value[hash]: {}) has the property 'key'.  If it does not, then 'add' increments a counter by one, the property 'this.numberOfValues'.  Ultimately 'add', sets the value of 'key' with 'value' ()
 HashTable.prototype.add = function(key, value) {
   var hash = this.calculateHash(key);
